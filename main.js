@@ -123,31 +123,17 @@ $(document).ready(function() {
         }
     });
 
-    // we loop through the array "icons"
-    icons.forEach((icon) => {
-        // for each icon, we pick all its properties using the destructuring assignment syntax
-        const {family, prefix, name, type} = icon;
-        // we use the family, the prefix and the name "to build" the font-awesome class corresponding to the icon
-        const iconClass = `${family} ${prefix}${name}`;
-        // we retrieve the index of the icon's type within the array "iconTypes"
-        const typeIndex = iconTypes.indexOf(type);
-        // according to the index, we set the icon's color
-        const iconColor = colors[typeIndex];
-        // we display each icon (with the corresponding name and color) in the html page
-        $('#container-icons').append(`
-            <div class="icon ${iconColor}">
-                <i class="${iconClass}"></i>
-                <p>${name}</p>
-            </div>
-        `);
-    });
+    // we "print" (within the html element with id "container-icons") all the icons included in the array "icons"
+    // each icon is printed together with its name
+    // icons of different types are printed with different colors; icons of the same type will have the same color
+    printIcons(icons, $('#container-icons'));
 
     // we select the option with id "select-all"
     // we set the value of this option equal to a string containing (as substrings) all the icon's types
     $('#select-all').val(iconTypes);
 
     // for each icon's type, we append to the html element with id "select-icons"
-    // an option having as value (and as inner text) the current icons' type
+    // an option having as value (and as inner text) the current icon's type
     iconTypes.forEach((type) => {
         $('#select-icons').append(`
             <option value="${type}">${type}</option>
@@ -163,8 +149,24 @@ $(document).ready(function() {
         const chosenType = $('#select-icons').val();
         // according to the chosen type, we filter the array of icons
         const chosenIcons = icons.filter((icon) => chosenType.includes(icon.type));
-        // we loop through the array "chosenIcons"
-        chosenIcons.forEach((icon) => {
+        // we "print" (within the html element with id "container-icons") all the icons included in the array "chosenIcons"
+        // each icon is printed together with its name
+        // icons of different types are printed with different colors; icons of the same type will have the same color
+        printIcons(chosenIcons, $('#container-icons'));
+    });
+
+
+
+
+    // ***************************** My functions *****************************
+
+    // this function takes as inputs an array of icons and an html element (in the form of a JQuery object)
+    // the function "prints" all the icons within the html element
+    // each icon is printed together with its name
+    // icons of different types are printed with different colors; icons of the same type will have the same color
+    function printIcons(arrayOfIcons, htmlElement) {
+        // we loop through the array "icons"
+        arrayOfIcons.forEach((icon) => {
             // for each icon, we pick all its properties using the destructuring assignment syntax
             const {family, prefix, name, type} = icon;
             // we use the family, the prefix and the name "to build" the font-awesome class corresponding to the icon
@@ -174,14 +176,14 @@ $(document).ready(function() {
             // according to the index, we set the icon's color
             const iconColor = colors[typeIndex];
             // we display each icon (with the corresponding name and color) in the html page
-            $('#container-icons').append(`
+            htmlElement.append(`
                 <div class="icon ${iconColor}">
-                    <i class="${iconClass}"></i>
-                    <p>${name}</p>
+                <i class="${iconClass}"></i>
+                <p>${name}</p>
                 </div>
             `);
         });
-    });
+    };
 
 
 });
