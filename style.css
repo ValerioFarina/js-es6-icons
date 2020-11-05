@@ -16,6 +16,12 @@
     color: blue;
 }
 
+#select-icons {
+    display: block;
+    margin: auto;
+    margin-top: 10px;
+}
+
 #container-icons {
     display: flex;
     flex-wrap: wrap;

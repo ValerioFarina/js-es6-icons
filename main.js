@@ -4,6 +4,9 @@
 /*  Milestone 2: definire un array di colori e associare ad ogni tipo di icona un colore.
                  Visualizzare le icone di colore diverso in base al tipo.  */
 
+/*  Milestone 3: aggiungere una select per filtrare le icone in base al tipo.
+                 Popolare le options della select dinamicamente e, ogni volta che cambia il valore selezionato, visualizzare le icone corrispondenti.  */
+
 $(document).ready(function() {
 
     // we create an array of objects
@@ -136,6 +139,18 @@ $(document).ready(function() {
                 <i class="${iconClass}"></i>
                 <p>${name}</p>
             </div>
+        `);
+    });
+
+    // we select the option with id "select-all"
+    // we set the value of this option equal to a string containing (as substrings) all the icon's types
+    $('#select-all').val(iconTypes);
+
+    // for each icon's type, we append to the html element with id "select-icons"
+    // an option having as value (and as inner text) the current icons' type
+    iconTypes.forEach((type) => {
+        $('#select-icons').append(`
+            <option value="${type}">${type}</option>
         `);
     });
 
