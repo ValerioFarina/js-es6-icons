@@ -119,17 +119,20 @@ $(document).ready(function() {
             iconTypes.push(icon.type);
         }
     });
-    console.log(iconTypes);
 
     // we loop through the array "icons"
     icons.forEach((icon) => {
-        // for each icon, we pick the family, the prefix and the name using the destructuring assignment syntax
-        const {family, prefix, name} = icon;
+        // for each icon, we pick all its properties using the destructuring assignment syntax
+        const {family, prefix, name, type} = icon;
         // we use the family, the prefix and the name "to build" the font-awesome class corresponding to the icon
         const iconClass = `${family} ${prefix}${name}`;
-        // we display each icon (with the corresponding name) in the html page
+        // we retrieve the index of the icon's type within the array "iconTypes"
+        const typeIndex = iconTypes.indexOf(type);
+        // according to the index, we set the icon's color
+        const iconColor = colors[typeIndex];
+        // we display each icon (with the corresponding name and color) in the html page
         $('#container-icons').append(`
-            <div class="icon">
+            <div class="icon ${iconColor}">
                 <i class="${iconClass}"></i>
                 <p>${name}</p>
             </div>
