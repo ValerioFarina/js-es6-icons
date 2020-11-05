@@ -135,9 +135,14 @@ $(document).ready(function() {
     // for each icon's type, we append to the html element with id "select-icons"
     // an option having as value (and as inner text) the current icon's type
     iconTypes.forEach((type) => {
-        $('#select-icons').append(`
-            <option value="${type}">${type}</option>
-        `);
+        // we get a copy of the tag "option" placed inside the dive with id "template-option"
+        const htmlOption = $('#template-option').children().clone()
+        // we set the value of htmlOption equal to type
+        htmlOption.val(type);
+        // we set the inner text of htmlOption equal to type
+        htmlOption.text(type);
+        // we append htmlOption to the div with id "select-icons"
+        $('#select-icons').append(htmlOption);
     });
 
     // we catch the event of value-change that involves the html element with id "select-icons"
@@ -175,13 +180,16 @@ $(document).ready(function() {
             const typeIndex = iconTypes.indexOf(type);
             // according to the index, we set the icon's color
             const iconColor = colors[typeIndex];
-            // we display each icon (with the corresponding name and color) in the html page
-            htmlElement.append(`
-                <div class="icon ${iconColor}">
-                    <i class="${iconClass}"></i>
-                    <p>${name}</p>
-                </div>
-            `);
+            // we get a copy of the div with class "icon" placed inside the div with id "template-icon"
+            const htmlIcon = $('#template-icon').children('.icon').clone();
+            // we add to this copy the class "iconColor"
+            htmlIcon.addClass(iconColor);
+            // htmlIcon has an <i></i> tag as children; we add to this children the class "iconClass"
+            htmlIcon.children('i').addClass(iconClass);
+            // htmlIcon has a <p></p> tag as children; we add to this children the name of the icon as inner text
+            htmlIcon.children('p').text(name);
+            // we append htmlIcon to htmlElement
+            htmlElement.append(htmlIcon)
         });
     };
 
