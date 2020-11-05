@@ -129,14 +129,14 @@ $(document).ready(function() {
     printIcons(icons, $('#container-icons'));
 
     // we select the option with id "select-all"
-    // we set the value of this option equal to a string containing (as substrings) all the icon's types
+    // we set the value of this option equal to a string containing (as substrings) all the icons' types
     $('#select-all').val(iconTypes);
 
     // for each icon's type, we append to the html element with id "select-icons"
     // an option having as value (and as inner text) the current icon's type
     iconTypes.forEach((type) => {
-        // we get a copy of the tag "option" placed inside the dive with id "template-option"
-        const htmlOption = $('#template-option').children().clone()
+        // we get a copy of the tag "option" placed inside the div with id "template-option"
+        const htmlOption = $('#template-option').children().clone();
         // we set the value of htmlOption equal to type
         htmlOption.val(type);
         // we set the inner text of htmlOption equal to type
@@ -170,7 +170,7 @@ $(document).ready(function() {
     // each icon is printed together with its name
     // icons of different types are printed with different colors; icons of the same type will have the same color
     function printIcons(arrayOfIcons, htmlElement) {
-        // we loop through the array "icons"
+        // we loop through the array "arrayOfIcons"
         arrayOfIcons.forEach((icon) => {
             // for each icon, we pick all its properties using the destructuring assignment syntax
             const {family, prefix, name, type} = icon;
