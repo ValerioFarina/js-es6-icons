@@ -178,8 +178,8 @@ $(document).ready(function() {
             // we display each icon (with the corresponding name and color) in the html page
             htmlElement.append(`
                 <div class="icon ${iconColor}">
-                <i class="${iconClass}"></i>
-                <p>${name}</p>
+                    <i class="${iconClass}"></i>
+                    <p>${name}</p>
                 </div>
             `);
         });
