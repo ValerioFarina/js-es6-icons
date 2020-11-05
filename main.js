@@ -108,11 +108,35 @@ $(document).ready(function() {
             prefix: 'fa-',
             type: 'user',
             family: 'fas'
+        },
+        {
+            name: 'facebook',
+            prefix: 'fa-',
+            type: 'social',
+            family: 'fab'
+        },
+        {
+            name: 'twitter',
+            prefix: 'fa-',
+            type: 'social',
+            family: 'fab'
+        },
+        {
+            name: 'instagram',
+            prefix: 'fa-',
+            type: 'social',
+            family: 'fab'
+        },
+        {
+            name: 'tiktok',
+            prefix: 'fa-',
+            type: 'social',
+            family: 'fab'
         }
     ];
 
     // we create an array of colors
-    const colors = ['red', 'green', 'blue'];
+    const colors = ['red', 'green', 'blue', 'purple'];
 
     // we create an array containing all our icons' types
     // each type occurs only once within the array
