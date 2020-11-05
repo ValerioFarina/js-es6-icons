@@ -1,3 +1,9 @@
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
 .red {
     color: red;
 }
@@ -8,4 +14,18 @@
 
 .blue {
     color: blue;
+}
+
+#container-icons {
+    display: flex;
+    flex-wrap: wrap;
+    margin: 10px;
+    border: 3px solid black;
+}
+
+.icon {
+    width: 250px;
+    padding: 50px;
+    font-size: 20px;
+    text-align: center;
 }
