@@ -156,7 +156,31 @@ $(document).ready(function() {
 
     // we catch the event of value-change that involves the html element with id "select-icons"
     $('#select-icons').change(() => {
-        alert('cambiata opzione');
+        // we remove all the icons
+        $('#container-icons').empty();
+        // we retrieve the value of the html element with id "select-icons"
+        // this value corresponds to the icon's type that has been chosen by the user
+        const chosenType = $('#select-icons').val();
+        // according to the chosen type, we filter the array of icons
+        const chosenIcons = icons.filter((icon) => chosenType.includes(icon.type));
+        // we loop through the array "chosenIcons"
+        chosenIcons.forEach((icon) => {
+            // for each icon, we pick all its properties using the destructuring assignment syntax
+            const {family, prefix, name, type} = icon;
+            // we use the family, the prefix and the name "to build" the font-awesome class corresponding to the icon
+            const iconClass = `${family} ${prefix}${name}`;
+            // we retrieve the index of the icon's type within the array "iconTypes"
+            const typeIndex = iconTypes.indexOf(type);
+            // according to the index, we set the icon's color
+            const iconColor = colors[typeIndex];
+            // we display each icon (with the corresponding name and color) in the html page
+            $('#container-icons').append(`
+                <div class="icon ${iconColor}">
+                    <i class="${iconClass}"></i>
+                    <p>${name}</p>
+                </div>
+            `);
+        });
     });
 
 
