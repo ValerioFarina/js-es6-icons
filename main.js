@@ -1,4 +1,5 @@
-// Milestone 1: definire un array di oggetti; ogni oggetto rappresenta un'icona, che è caratterizzata da: nome, prefisso, tipo e famiglia.
+/*  Milestone 1: definire un array di oggetti; ogni oggetto rappresenta un'icona, che è caratterizzata da: nome, prefisso, tipo e famiglia.
+                 Utilizzando la funzione forEach e il template literal, visualizzare in pagina tutte le icone con il proprio nome.  */
 
 $(document).ready(function() {
 
@@ -103,7 +104,21 @@ $(document).ready(function() {
             family: 'fas'
         }
     ];
-    console.log(icons);
+
+    // we loop through the array "icons"
+    icons.forEach((icon) => {
+        // for each icon, we pick the family, the prefix and the name using the destructuring assignment syntax
+        const {family, prefix, name} = icon;
+        // we use the family, the prefix and the name "to build" the font-awesome class corresponding to the icon
+        const iconClass = `${family} ${prefix}${name}`;
+        // we display each icon (with the corresponding name) in the html page
+        $('#container-icons').append(`
+            <div class="icon">
+                <i class="${iconClass}"></i>
+                <p>${name}</p>
+            </div>
+        `);
+    });
 
 
 });
