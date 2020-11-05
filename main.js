@@ -154,5 +154,10 @@ $(document).ready(function() {
         `);
     });
 
+    // we catch the event of value-change that involves the html element with id "select-icons"
+    $('#select-icons').change(() => {
+        alert('cambiata opzione');
+    });
+
 
 });
